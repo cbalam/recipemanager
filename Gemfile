@@ -40,6 +40,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

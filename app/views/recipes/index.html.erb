@@ -1,4 +1,7 @@
 <%= render 'shared/page_title', title: 'All Recipes' %>
+
+<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+
 <% @recipes.each do |recipe| %>
     <div class="row">
         <div class="col-md-2">
@@ -11,8 +14,17 @@
             <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
             <p><%= recipe.summary %></p>
             <p>
-                <span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %></small></span>
+                <span class="quiet"><small>Created: <%= time_ago_in_words(recipe.created_at) %></small></span>
+                <span class="quiet"><small>| Updated: <%= time_ago_in_words(recipe.updated_at) %></small></span>
             </p>
+            <div class="position-absolute like-box">
+                <%= link_to like_recipe_path(recipe, like: true), method: :post, class: "px-2" do %>
+                    <i class="far fa-thumbs-up"></i> <%= recipe.thumbs_up_total %>
+                <% end%>
+                <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+                    <i class="far fa-thumbs-down"></i> <%= recipe.thumbs_down_total %>
+                <% end%>
+            </div>
         </div>
         <div class="col-md-4">
             <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
@@ -20,3 +32,5 @@
         <hr class="col-12"/>
     </div>
 <% end %>
+
+<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>

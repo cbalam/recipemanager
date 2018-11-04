@@ -7,9 +7,17 @@
             <div class="show_recipe">
                 <%= image_tag(@recipe.picture.url, size: "250x150", class: "gravatar") if @recipe.picture? %>
             </div>
-            <div class="card bg-light p-2 my-4">
+            <div class="card bg-light p-2 my-4 position-relative">
                 <p><strong>Steps:</strong></p>
                 <%= simple_format(@recipe.description) %>
+                <div class="position-absolute like-box">
+                    <%= link_to like_recipe_path(@recipe, like: true), method: :post, class: "px-2" do %>
+                        <i class="far fa-thumbs-up"></i> <%= @recipe.thumbs_up_total %>
+                    <% end%>
+                    <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+                        <i class="far fa-thumbs-down"></i> <%= @recipe.thumbs_down_total %>
+                    <% end%>
+                </div>
             </div>
         </div>
         <div class="col-md-4 text-center">
