@@ -1,16 +1,21 @@
-<%= render 'shared/page_title', title: 'All Recipes' %>
+<%= render 'shared/page_title', title: 'Chef: ' + @chef.name %>
 
-<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+<div class="row">
+    <div class="col-md-4 offset-4 text-center">
+        <%= gravatar_for @chef, size: 200 %>
+        <hr/>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-md-4 offset-4 text-center">
+        <h3 class="my-4"><em>Recipes:</em></h3>
+        <%= will_paginate(@recipes, class: "d-flex justify-content-center", :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>        
+    </div>
+</div>
 <% @recipes.each do |recipe| %>
-    <div class="row my-4">
-        <div class="col-md-2">
-            <section class="chef_info text-center">
-                <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
-                <h6>Chef name: <%= recipe.chef.name %></h6>
-            </section>
-        </div>
-        <div class="card bg-light col-md-6">
+    <div class="row">
+        <div class="card bg-light col-md-6 offset-3 my-3 p-4">
             <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
             <p><%= recipe.summary %></p>
             <p>
@@ -26,11 +31,5 @@
                 <% end%>
             </div>
         </div>
-        <div class="col-md-4">
-            <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
-        </div>
-        <hr class="col-12"/>
     </div>
 <% end %>
-
-<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>

@@ -1,0 +1,21 @@
+<%= render 'shared/errors', obj: @chef %>
+
+<div class="row">
+    <div class="card bg-light col-md-8 offset-2 py-md-4">
+        <%= form_for @chef do |c| %>
+            <div class="form-group">
+                <%= label(:chef, :name) %>
+                <%= text_field(:chef, :name, class: 'form-control') %>
+            </div>
+            <div class="form-group">
+                <%= label(:chef, :email) %>
+                <%= text_field(:chef, :email, class: 'form-control') %>
+            </div>
+            <div class="form-group">
+                <%= label(:cehf, :password) %>
+                <%= password_field(:chef, :password, class: 'form-control') %>
+            </div>
+            <%= c.submit(@chef.new_record? ? 'Sign up' : 'Edit profile', class: "btn btn-success btn-block") %>
+        <% end %>
+    </div>
+</div>
