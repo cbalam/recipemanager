@@ -1,5 +1,14 @@
 <%= render 'shared/page_title', title: 'All Chefs' %>
 
+<ul class="nav nav-tabs my-4">
+  <li class="nav-item">
+    <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Chefs", chefs_path, class: "nav-link active" %>
+  </li>
+</ul>
+
 <div class="row">
     <div class="col-md-4 offset-4 text-center">
         <%= will_paginate(@things, class: "d-flex justify-content-center", :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>        
