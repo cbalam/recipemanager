@@ -7,11 +7,39 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <%= link_to "#", id: "stylesList", class: "nav-link dropdown-toggle", "data-toggle"=>"dropdown", "role"=>"button", "aria-expanded"=>"false" do  %>
+            Styles <b class="caret"></b>
+          <% end %>
+          <div class="dropdown-menu" aria-labelledby="stylesList">
+            <% Style.all.each do |style| %>
+              <%= link_to style.name, style_path(style), class: "dropdown-item" %>
+            <% end %>
+            <% if logged_in? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "New Style", new_style_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <%= link_to "#", id: "ingredientsList", class: "nav-link dropdown-toggle", "data-toggle"=>"dropdown", "role"=>"button", "aria-expanded"=>"false" do  %>
+            Ingredients <b class="caret"></b>
+          <% end %>
+          <div class="dropdown-menu" aria-labelledby="ingredientsList">
+            <% Ingredient.all.each do |ingredient| %>
+              <%= link_to ingredient.name, ingredient_path(ingredient), class: "dropdown-item" %>
+            <% end %>
+            <% if logged_in? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "New Ingredient", new_ingredient_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
         <% if logged_in? %>
           <li class="nav-item">
             <%= link_to "New Recipe", new_recipe_path, class: "nav-link" %>
           </li>
-           <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <%= link_to "#", id: "myAccountMenu", class: "nav-link dropdown-toggle", "data-toggle"=>"dropdown", "role"=>"button", "aria-expanded"=>"false" do  %>
               <%= current_user.name %> <b class="caret"></b>
             <% end %>

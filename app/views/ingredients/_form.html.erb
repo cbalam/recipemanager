@@ -1,0 +1,14 @@
+<%= render 'shared/errors', obj: @ingredient %>
+
+<div class="row">
+    <div class="card bg-light col-md-8 offset-2 py-md-4">
+        <%= form_for @ingredient do |r| %>
+            <div class="form-group">
+                <%= label(:ingredient, :name) %>
+                <%= text_field(:ingredient, :name, class: 'form-control') %>
+            </div>
+            
+            <%= r.submit('Create Ingredient', class: "btn btn-success btn-block") %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<%= render 'shared/errors', obj: @style %>
+
+<div class="row">
+    <div class="card bg-light col-md-8 offset-2 py-md-4">
+        <%= form_for @style do |r| %>
+            <div class="form-group">
+                <%= label(:style, :name) %>
+                <%= text_field(:style, :name, class: 'form-control') %>
+            </div>
+            
+            <%= r.submit('Create Style', class: "btn btn-success btn-block") %>
+        <% end %>
+    </div>
+</div>
