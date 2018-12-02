@@ -19,7 +19,7 @@
               <strong>Styles:</strong>
               <%= r.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
                 <div class="form-check form-check-inline">
-                  <%= cb.label(class: "form-check-label") { cb.check_box(class: "form-check-input") + cb.text} %>
+                  <%= cb.label(class: "form-check-label input-checkbox") { cb.check_box(class: "form-check-input") + cb.text} %>
                 </div>
               <% end %>
             </div>
@@ -27,7 +27,7 @@
               <strong>Ingredients:</strong>
               <%= r.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
                 <div class="form-check form-check-inline">
-                  <%= cb.label(class: "form-check-label") { cb.check_box(class: "form-check-input") + cb.text} %>
+                  <%= cb.label(class: "form-check-label input-checkbox") { cb.check_box(class: "form-check-input") + cb.text} %>
                 </div>
               <% end %>
             </div>
